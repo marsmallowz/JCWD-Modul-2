@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/439bcacf6b.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>X Band</title>
+    <style>
+      li {
+        float: left;
+      }
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: rgb(0, 0, 0);
+      }
+      li a:hover {
+        background-color: rgb(178, 171, 171);
+      }
+
+      .bottom-centered-title {
+        position: absolute;
+        top: 86%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .bottom-centered {
+        position: absolute;
+        top: 90%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    </style>
+  </head>
+  <body style="margin: 0">
+    <ul>
+      <li><a href="#HOME">HOME</a></li>
+      <li><a href="#BAND">BAND</a></li>
+      <li><a href="#TOUR">TOUR</a></li>
+      <li><a href="#CONTACT">CONTACT</a></li>
+      <li><a href="#MORE">MORE</a></li>
+      <li style="float: right">
+        <a
+          href="#about"
+          onmouseover="this.style.background='red'"
+          onmouseout="this.style.background='black'"
+        >
+          <i class="fa-solid fa-magnifying-glass" style="color: white"></i>
+        </a>
+      </li>
+    </ul>
+    <div class="mySlides" style="position: relative">
+      <img src="chicago.jpg" alt="chicago.jpg" style="width: 100%" />
+      <div
+        class="bottom-centered-title"
+        style="color: white; font-size: 25px; font-weight: 500"
+      >
+        Chicago
+      </div>
+      <div class="bottom-centered" style="color: white; font-weight: 600">
+        Thank you Chicago - A night won't forget.
+      </div>
+    </div>
+    <div class="mySlides" style="position: relative">
+      <img src="la.jpg" alt="la.jpg" style="width: 100%" />
+      <div
+        class="bottom-centered-title"
+        style="color: white; font-size: 25px; font-weight: 500"
+      >
+        Los Angeles
+      </div>
+      <div class="bottom-centered" style="color: white; font-weight: 600">
+        We Had the best time playing at Venich Beach!
+      </div>
+    </div>
+    <div class="mySlides" style="position: relative">
+      <img src="ny.jpg" alt="ny.jpg" style="width: 100%" />
+      <div
+        class="bottom-centered-title"
+        style="color: white; font-size: 25px; font-weight: 500"
+      >
+        New York
+      </div>
+      <div class="bottom-centered" style="color: white; font-weight: 600">
+        The atmosphere in New York is lorem ipsum.
+      </div>
+    </div>
+    <div style="width: 60%; text-align: center; margin: auto">
+      <div>THE BAND</div>
+      <div>We Love Music</div>
+      <p>
+        We have created a fictional band website. Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+        dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      </p>
+      <div style="display: flex; justify-content: space-around">
+        <div>
+          <div>Name</div>
+          <img src="bandmember.jpg" alt="bandmember.jpg" />
+        </div>
+        <div>
+          <div>Name</div>
+          <img src="bandmember.jpg" alt="bandmember.jpg" />
+        </div>
+        <div>
+          <div>Name</div>
+          <img src="bandmember.jpg" alt="bandmember.jpg" />
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let slideIndex = 0;
+      showSlides();
+
+      function showSlides() {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {
+          slideIndex = 1;
+        }
+
+        slides[slideIndex - 1].style.display = "block";
+        setTimeout(showSlides, 2000); // Change image every 2 seconds
+      }
+    </script>
+  </body>
+</html>
