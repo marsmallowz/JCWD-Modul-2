@@ -102,9 +102,19 @@ button {
   background-color: #acccbf;
   border-radius: 5px;
 }
+
 #navBar {
   display: flex;
-  max-width: 560px;
   justify-content: space-between;
   padding: 10px;
+  width: 480px;
+}
+
+@media screen and (max-width: 480px) {
+  #navBar {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    width: auto;
+  }
 }
