@@ -1,0 +1,37 @@
+#App {
+  display: flex;
+  justify-items: center;
+  /* align-items: center; */
+  align-content: space-around;
+  justify-content: center;
+  gap: 10px;
+  flex-direction: column;
+  width: 480px;
+  margin: 15px auto;
+}
+
+#input {
+  display: flex;
+  align-self: center;
+}
+
+table {
+  border-collapse: collapse;
+  border: none;
+}
+tr {
+  border-top: 1px solid black;
+}
+
+tr:first-child {
+  border-top: none;
+}
+
+td {
+  border: none !important;
+}
+
+th,
+td {
+  padding: 15px;
+}

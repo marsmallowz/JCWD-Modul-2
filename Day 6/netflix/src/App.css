@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.app {
+  display: grid;
+  grid-template-rows: 0.2fr 1.5fr 1fr;
+}
+
+.navbar {
+  background-image: linear-gradient(
+    to bottom right,
+    black,
+    rgba(255, 255, 255, 0)
+  );
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  padding: 20px 35px;
+}
+
+.navbar .menu-left {
+  display: grid;
+  grid-template-columns: 1fr 9fr;
+  align-items: center;
+  column-gap: 30px;
+}
+
+.navbar .menu-left .list-menu {
+  display: flex;
+  font-size: 14px;
+  gap: 20px;
+  color: white;
+}
+
+.navbar .menu-right {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}

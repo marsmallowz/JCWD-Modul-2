@@ -1,0 +1,31 @@
+{
+  "posts": [
+    {
+      "id": 0,
+      "name": "",
+      "description": "",
+      "price": 0,
+      "image_url": ""
+    }
+  ],
+  "users": [
+    {
+      "id": 0,
+      "email": "",
+      "username": "",
+      "password": ""
+    },
+    {
+      "id": 1,
+      "email": "mazsanzgame@gmail.com",
+      "username": "marsmallowz",
+      "password": "qweqwe"
+    },
+    {
+      "id": 2,
+      "email": "jason@gmail.com",
+      "username": "jason",
+      "password": "qweqwe"
+    }
+  ]
+}
