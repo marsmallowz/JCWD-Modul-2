@@ -8,6 +8,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.2.1",
+    "classnames": "^2.3.2",
     "formik": "^2.2.9",
     "json-server": "^0.17.1",
     "react": "^18.2.0",
@@ -16,8 +17,10 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.5.0",
     "react-scripts": "5.0.1",
+    "react-select": "^5.7.0",
     "react-tailwindcss-select": "^1.6.0",
     "redux": "^4.2.0",
+    "redux-thunk": "^2.4.2",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
   },

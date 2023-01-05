@@ -16,15 +16,21 @@
       "password": ""
     },
     {
-      "id": 1,
+      "id": 2,
+      "email": "jason@gmail.com",
+      "username": "jason",
+      "password": "qweqwe"
+    },
+    {
+      "id": 3,
       "email": "mazsanzgame@gmail.com",
       "username": "marsmallowz",
       "password": "qweqwe"
     },
     {
-      "id": 2,
-      "email": "jason@gmail.com",
-      "username": "jason",
+      "id": 4,
+      "email": "alsandymaulana15@gmail.com",
+      "username": "massandz",
       "password": "qweqwe"
     }
   ]

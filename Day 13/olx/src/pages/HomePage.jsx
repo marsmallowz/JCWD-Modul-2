@@ -30,9 +30,9 @@ export default function HomePage() {
     setAnimal(value);
   }
   return (
-    <div>
-      <div className="bg-slate-100">
-        <div className="flex flex-row py-3 w-4/5 mx-auto justify-center gap-3 items-center z-50">
+    <div className="flex flex-col">
+      <div className="sticky top-0 z-50 bg-slate-100 border-white border-b-4 shadow-sm">
+        <div className="flex flex-row py-2 px-10 mx-auto justify-between gap-5 items-center z-50">
           <img src="/assets/OLX-green-logo.png" alt="" className="w-10 h-6" />
           <div className="w-1/3 ">
             <Select
@@ -55,8 +55,10 @@ export default function HomePage() {
               <FiSearch className="text-white w-6 h-6" />
             </button>
           </div>
-          <div className="flex flex-row gap-4 items-center">
-            <u>Login/daftar</u>
+          <div className="flex flex-row gap-4 items-center font-bold">
+            <span className="border-b-2 border-black hover:border-b-0 cursor-pointer">
+              Login/daftar
+            </span>
             <button className="bg-white px-4 py-2 rounded-full flex items-center gap-1 border-4 border-yellow-500">
               <HiPlus className="w-5 h-5" />
               <div className="font-bold">JUAL</div>
@@ -64,7 +66,22 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-
+      <div className="flex gap-8 py-3 px-8 items-center">
+        <div className="font-medium">SEMUA KATEGORI</div>
+        <div className="flex gap-4 text-sm">
+          <div>Mobil Bekas</div>
+          <div>Motor Bekas</div>
+          <div>Properti</div>
+          <div>Handphone</div>
+          <div>Jasa & Lowongan Kerja</div>
+          <div>TV & Audio, Video</div>
+        </div>
+      </div>
+      <img
+        src="https://statics.olx.co.id/external/base/img/hero_bg_id.jpg"
+        alt=""
+        className="h-64 object-cover"
+      />
       <div className="text-lg">Rekomendasi Terbaru</div>
       <div className="px-10 py-5">
         <div className="grid grid-cols-4 gap-3">
