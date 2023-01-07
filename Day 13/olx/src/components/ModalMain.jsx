@@ -83,7 +83,8 @@ export default function ModalMain({ isVisible, closeModal }) {
       />
       <ModalLogin
         isVisible={showModalLogin}
-        closeModal={() => setShowModalLogin(false)}
+        closeModalMain={() => closeModal()}
+        closeModalLogin={() => setShowModalLogin(false)}
       />
     </div>
   );

@@ -1,78 +1,40 @@
-import Select from "react-tailwindcss-select";
-import { useState } from "react";
-import { HiPlus } from "react-icons/hi";
-import { FiSearch } from "react-icons/fi";
+import { useEffect, useState } from "react";
 import { BsChevronRight, BsTelephone } from "react-icons/bs";
+import ModalMain from "../components/ModalMain";
 
 import { AiOutlineHeart, AiOutlineShareAlt } from "react-icons/ai";
-import ModalMain from "../components/ModalMain";
+import NavBar from "../components/navBar";
+import { useLocation } from "react-router-dom";
+import { axiosInstance } from "../config/config";
 
 export default function ItemPage(params) {
   const [showModal, setShowModal] = useState(false);
-  const [animal, setAnimal] = useState(null);
+  const location = useLocation();
+  const [item, setItem] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
-  const options = [
-    {
-      label: "🌐 GUNAKAN LOKASI SAAT INI",
-      value: "GUNAKAN LOKASI SAAT INI",
-    },
-    {
-      label: "LOKASI TERKINI",
-      options: [{ value: "Kepulauan Riau", label: "Kepulauan Riau" }],
-    },
-    {
-      label: "LOKASI POPULER",
-      options: [
-        { value: "Jakarta Utara", label: "Jakarta Utara" },
-        { value: "Jakarta Selatan", label: "Jakarta Selatan" },
-      ],
-    },
-    // { value: "Jakarta D.K.I", label: "" },
-  ];
-  function handleChange(value) {
-    console.log("value:", value);
-    setAnimal(value);
+  async function fetchItemDetails(id) {
+    const res = await axiosInstance.get("/items", { params: { id } });
+    console.log(res.data[0]);
+    console.log({ ...res.data[0] });
+
+    setItem({ ...res.data[0] });
   }
-  return (
-    <div className="bg-slate-100">
-      <div className="sticky top-0 z-10 bg-slate-100 border-white border-b-4 shadow-sm">
-        <div className="flex flex-row py-2 px-10 mx-auto justify-between gap-5 items-center z-50">
-          <img src="/assets/OLX-green-logo.png" alt="" className="w-10 h-6" />
-          <div className="w-1/3 ">
-            <Select
-              options={options}
-              isSearchable="true"
-              onChange={handleChange}
-              value={animal}
-              classNames={{ searchContainer: "py-5" }}
-            />
-          </div>
+  useEffect(() => {
+    setIsLoading(false);
+    let itemId = location.pathname?.split("/item/")[1];
+    fetchItemDetails(itemId);
+    console.log("myItem");
+    console.log(item);
+    console.log("foto");
+    console.log(item.listFoto);
+  }, [location.pathname?.split("/item/")[1]]);
 
-          {/* <div className="font-medium text-lg text-slate-800">Search</div> */}
-          <div className="flex justify-center w-11/12  ">
-            <input
-              type="text"
-              placeholder="Temukan Mobil, Handphone, dan lainnnya ..."
-              className="p-3 rounded-l-md w-11/12 border-y-2 border-l-2 border-black"
-            />
-            <button className="p-3 rounded-r-md bg-slate-800 ">
-              <FiSearch className="text-white w-6 h-6" />
-            </button>
-          </div>
-          <div className="flex flex-row gap-4 items-center font-bold">
-            <span
-              className="border-b-2 border-black hover:border-b-0 cursor-pointer"
-              onClick={() => setShowModal(true)}
-            >
-              Login/daftar
-            </span>
-            <button className="bg-white px-4 py-2 rounded-full flex items-center gap-1 border-4 border-yellow-500">
-              <HiPlus className="w-5 h-5" />
-              <div className="font-bold">JUAL</div>
-            </button>
-          </div>
-        </div>
-      </div>
+  return isLoading ? (
+    <div>Loading</div>
+  ) : (
+    <div className="bg-slate-100">
+      <NavBar setShowModal={setShowModal} />
       <div className="flex gap-1 mx-10">
         <div>Beranda</div>
         <div>&rsaquo;</div>
@@ -88,16 +50,15 @@ export default function ItemPage(params) {
           <div className="flex flex-col border-2  rounded-md  shadow-sm bg-white">
             <div className="flex justify-center bg-black rounded-t-md">
               <img
-                src="/assets/japan.jpg"
-                alt=""
-                className="h-[480px] object-cover "
+                src={item?.listFoto[0]}
+                alt="/assets/japan.jpg"
+                className="h-[480px] object-cover"
               />
             </div>
             <div className="flex w-32 h-32 p-5 gap-5">
-              <img src="/assets/japan.jpg" alt="" />
-              <img src="/assets/japan.jpg" alt="" />
-              <img src="/assets/japan.jpg" alt="" />
-              <img src="/assets/japan.jpg" alt="" />
+              {item.listFoto?.map((foto) => {
+                return <img src={foto} alt="/assets/japan.jpg" />;
+              })}
             </div>
           </div>
           <div className="flex flex-col rounded-md border-2 p-3 bg-white">
@@ -116,31 +77,27 @@ export default function ItemPage(params) {
             </div>
             <hr className="border-t-2 border-gray-300 my-3 " />
             <div className="font-bold text-xl mb-3">Deskripsi</div>
-            <div>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere
-              deleniti, repellendus minima iste, praesentium voluptates, omnis
-              adipisci blanditiis modi iure culpa eligendi! Voluptatum officiis
-              a quam ipsum dignissimos similique in. Magni impedit autem
-              voluptatem fugit, incidunt obcaecati nisi qui enim, itaque tenetur
-              sint! Quidem exercitationem beatae similique minima expedita! In
-              temporibus pariatur libero velit, et ad cum corporis reiciendis
-              maiores!
-            </div>
+            <div>{item.dekskripsi}</div>
           </div>
         </div>
         <div className="flex flex-col basis-1/3 gap-2">
           <div className="flex flex-col gap-1 px-4 py-5 border-2 rounded-md bg-white">
             <div className="flex justify-between items-center">
-              <div className="font-bold text-2xl">RP 8.650.000</div>
+              <div className="font-bold text-2xl">
+                RP {parseFloat(item.harga).toLocaleString("en")}
+              </div>
               <div className="flex gap-3">
                 <AiOutlineHeart className="w-7 h-7" />
                 <AiOutlineShareAlt className="w-7 h-7" />
               </div>
             </div>
             <div>2003</div>
-            <div className="text-gray-500">Satria Hiu Mulus seperti baru</div>
+            <div className="text-gray-500">{item.judul}</div>
             <div className="flex mt-2 text-xs  justify-between text-gray-600 ">
-              <div className="">Ciracas, Jakarta Timur, Jakarta D.K.I.</div>
+              <div className="">
+                {item.kecamatan?.label}, {item.kota?.label},{" "}
+                {item.wilayah?.label}
+              </div>
               <div>27 Nov</div>
             </div>
           </div>

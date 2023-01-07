@@ -10,8 +10,11 @@ import {
   MdOutlinePrint,
 } from "react-icons/md";
 import { IoShirtOutline } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 
 export default function PostPage(params) {
+  let navigate = useNavigate();
+
   return (
     <div>
       <div className="sticky top-0 h-30 bg-slate-100 p-6 shadow-md">
@@ -35,7 +38,12 @@ export default function PostPage(params) {
                 </div>
                 <ul className="group-hover:block hidden w-full absolute text-gray-700 top-0 -right-full border-2 divide-y-2">
                   <li>
-                    <button className="hover:bg-gray-400 py-3 px-4 block whitespace-no-wrap w-full text-left">
+                    <button
+                      onClick={() => {
+                        navigate("/post/attributes", { replace: true });
+                      }}
+                      className="hover:bg-gray-400 py-3 px-4 block whitespace-no-wrap w-full text-left"
+                    >
                       Mobil Bekas
                     </button>
                   </li>
@@ -175,8 +183,7 @@ export default function PostPage(params) {
           <span class="pr-1 font-semibold flex-1">Dropdown</span>
           <span>
             <svg
-              class="fill-current h-4 w-4 transform group-hover:-rotate-180
-        transition duration-150 ease-in-out"
+              class="fill-current h-4 w-4 transform group-hover:-rotate-180 transition duration-150 ease-in-out"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
             >
@@ -184,10 +191,7 @@ export default function PostPage(params) {
             </svg>
           </span>
         </button>
-        <ul
-          class="bg-white border rounded-sm transform scale-0 group-hover:scale-100 absolute 
-  transition duration-150 ease-in-out origin-top min-w-32"
-        >
+        <ul class="bg-white border rounded-sm transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-top min-w-32">
           <li class="rounded-sm px-3 py-1 hover:bg-gray-100">Programming</li>
           <li class="rounded-sm px-3 py-1 hover:bg-gray-100">DevOps</li>
           <li class="rounded-sm relative px-3 py-1 hover:bg-gray-100">
@@ -195,8 +199,7 @@ export default function PostPage(params) {
               <span class="pr-1 flex-1">Langauges</span>
               <span class="mr-auto">
                 <svg
-                  class="fill-current h-4 w-4
-            transition duration-150 ease-in-out"
+                  class="fill-current h-4 w-4 transition duration-150 ease-in-out"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                 >
@@ -204,20 +207,14 @@ export default function PostPage(params) {
                 </svg>
               </span>
             </button>
-            <ul
-              class="bg-white border rounded-sm absolute top-0 right-0 
-  transition duration-150 ease-in-out origin-top-left
-  min-w-32
-  "
-            >
+            <ul class="bg-white border rounded-sm absolute top-0 right-0 transition duration-150 ease-in-out origin-top-left min-w-32">
               <li class="px-3 py-1 hover:bg-gray-100">Javascript</li>
               <li class="rounded-sm relative px-3 py-1 hover:bg-gray-100">
                 <button class="w-full text-left flex items-center outline-none focus:outline-none">
                   <span class="pr-1 flex-1">Python</span>
                   <span class="mr-auto">
                     <svg
-                      class="fill-current h-4 w-4
-                transition duration-150 ease-in-out"
+                      class="fill-current h-4 w-4 transition duration-150 ease-in-out"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 20 20"
                     >
@@ -225,12 +222,7 @@ export default function PostPage(params) {
                     </svg>
                   </span>
                 </button>
-                <ul
-                  class="bg-white border rounded-sm absolute top-0 right-0 
-      transition duration-150 ease-in-out origin-top-left
-      min-w-32
-      "
-                >
+                <ul class="bg-white border rounded-sm absolute top-0 right-0 transition duration-150 ease-in-out origin-top-left min-w-32  ">
                   <li class="px-3 py-1 hover:bg-gray-100">2.7</li>
                   <li class="px-3 py-1 hover:bg-gray-100">3+</li>
                 </ul>
@@ -241,40 +233,7 @@ export default function PostPage(params) {
           </li>
           <li class="rounded-sm px-3 py-1 hover:bg-gray-100">Testing</li>
         </ul>
-      </div>{" "}
+      </div>
     </div>
   );
 }
-
-// return (
-//     <div>
-//       <div className="sticky top-0 h-30 bg-slate-100 p-6 shadow-md">
-//         <TfiArrowLeft className="font-bold text-xl" />
-//       </div>
-//       <div className="flex flex-col items-center p-4 gap-3">
-//         <h1 className="font-bold text-2xl">PASANG IKLAN ANDA</h1>
-//         <div className="grid grid-cols-2 grid-rows-[repeat(12,_minmax(0,_1fr))] w-2/3 p-0.5 bg-gray-300 gap-0.5 grid-flow-col rounded-sm">
-//           <div className="col-span-2 row-span-2 flex bg-white px-5 items-center font-bold text-base">
-//             PILIH KATEGORI
-//           </div>
-//           <div className="flex justify-between items-center text-xl bg-white p-3 text-gray-500 cursor-pointer hover:bg-gray-300 hover:text-black">
-//             <div className="flex gap-3 text-base items-center ">
-//               <BiCar className="w-6 h-6" />
-//               <div>Mobil</div>
-//             </div>
-//             <BsChevronRight />
-//           </div>
-//           <div className="bg-white p-2">3</div>
-//           <div className="bg-white p-2">4</div>
-//           <div className="bg-white p-2">5</div>
-//           <div className="bg-white p-2">6</div>
-//           <div className="bg-white p-2">7</div>
-//           <div className="bg-white p-2">8</div>
-//           <div className="bg-white p-2">9</div>
-//           <div className="bg-white p-2">10</div>
-//           <div className="bg-white p-2">11</div>
-//           <div className="bg-white p-2 row-[span_10_/_span_12]"></div>
-//         </div>
-//       </div>
-//     </div>
-//   );

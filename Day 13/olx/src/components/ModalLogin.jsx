@@ -3,12 +3,24 @@ import { useFormik } from "formik";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 import { axiosInstance } from "../config/config";
+import { userLogin } from "../redux/middleware/userauth";
 
-export default function ModalLogin({ isVisible, closeModal }) {
+export default function ModalLogin({
+  isVisible,
+  closeModalLogin,
+  closeModalMain,
+}) {
   let navigate = useNavigate();
   const [enable, setEnable] = useState(false);
+  const dispatch = useDispatch();
+  const [status, setStatus] = useState(false);
+
+  function closeModalLoginOnWrapper(e) {
+    if (e.target.id === "wrapper") closeModalLogin();
+  }
 
   const formik = useFormik({
     initialValues: {
@@ -16,9 +28,20 @@ export default function ModalLogin({ isVisible, closeModal }) {
       password: "",
     },
     onSubmit: async () => {
-      const res = await axiosInstance.get("/users/", { params: formik.values });
-      if (res.status === 200)
-        navigate("/", { replace: true, state: { user: res.data[0] } });
+      const isAuth = await dispatch(userLogin(formik.values));
+      console.log(isAuth);
+      if (isAuth.status) {
+        console.log("Masuk");
+        closeModalLogin();
+        closeModalMain();
+        return navigate("/", { state: { user: isAuth.data }, replace: true });
+      }
+      console.log("Ndak");
+
+      return setStatus(true);
+      // const res = await axiosInstance.get("/users/", { params: formik.values });
+      // if (res.status === 200)
+      //   navigate("/", { replace: true, state: { user: res.data[0] } });
     },
   });
 
@@ -33,21 +56,21 @@ export default function ModalLogin({ isVisible, closeModal }) {
   }, [formik.values]);
 
   if (!isVisible) return null;
-  function closeModalOnWrapper(e) {
-    if (e.target.id === "wrapper") closeModal();
-  }
+
   return (
     <div
       className="fixed inset-0  bg-opacity-70  z-40 flex flex-col justify-center items-center"
       id="wrapper"
-      onClick={closeModalOnWrapper}
+      onClick={closeModalLoginOnWrapper}
     >
       <div className="w-1/3 h-5/6 px-7 ">
         <div className="flex flex-col h-full gap-6 bg-white border-2 p-3 rounded-md">
           <div className="flex justify-between">
             <TfiArrowLeft
               className="h-6 w-6 cursor-pointer"
-              onClick={() => closeModal()}
+              onClick={() => {
+                closeModalLogin();
+              }}
             />
             <TfiClose className="text-white h-6 w-6" />
           </div>
@@ -70,6 +93,9 @@ export default function ModalLogin({ isVisible, closeModal }) {
               placeholder="Password"
               onChange={(e) => formik.setFieldValue("password", e.target.value)}
             />
+          </div>
+          <div className={status ? "flex justify-center" : "hidden"}>
+            Password Atau Username Salah
           </div>
           <button
             type="submit"

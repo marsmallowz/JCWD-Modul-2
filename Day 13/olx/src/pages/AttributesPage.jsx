@@ -9,20 +9,15 @@ import { useFormik } from "formik";
 import { axiosInstance } from "../config/config";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 export default function AttributesPage(params) {
   let navigate = useNavigate();
-
-  // const [transmisi, setTransmisi] = useState("");
-  // const [wilayah, setWilayah] = useState();
-  // const [kota, setKota] = useState();
-  // const [tipeBahanBakar, setTipeBahanBakar] = useState("");
-  // const [listFoto, setListFoto] = useState([]);
   const [imageUrl, setImageUrl] = useState("");
-
   const [enable, setEnable] = useState(false);
-
+  const userSelector = useSelector((state) => state.auth);
   const formik = useFormik({
     initialValues: {
+      id: 0,
       merek: "",
       model: "",
       transmisi: "",
@@ -42,10 +37,11 @@ export default function AttributesPage(params) {
       wilayah: {},
       kota: {},
       kecamatan: {},
+      idPenjual: userSelector.id,
     },
     onSubmit: async () => {
       const res = await axiosInstance.post("/items/", {
-        params: formik.values,
+        ...formik.values,
       });
       if (res.status === 200)
         navigate("/", { replace: true, state: { user: res.data[0] } });
@@ -407,7 +403,7 @@ export default function AttributesPage(params) {
                     : "hidden"
                 }
               >
-                <label htmlFor="varian">Varian *</label>
+                <label htmlFor="varian">Varian </label>
                 <Select
                   id="varian"
                   name="varian"
@@ -985,6 +981,7 @@ export default function AttributesPage(params) {
                 <button
                   disabled={enable ? null : "disable"}
                   className="w-3/5 bg-blue-500 text-white disabled:bg-gray-300 disabled:text-gray-600 font-bold text-lg py-3 px-5"
+                  onClick={formik.handleSubmit}
                 >
                   Pasang Iklan Sekarang
                 </button>

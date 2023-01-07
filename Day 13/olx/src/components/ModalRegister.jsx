@@ -13,20 +13,29 @@ export default function ModalRegister({
 }) {
   let navigate = useNavigate();
   const [enable, setEnable] = useState(false);
-
+  let listImage = [
+    "/assets/l1.jpeg",
+    "/assets/l2.jpeg",
+    "/assets/l3.jpeg",
+    "/assets/l4.jpeg",
+    "/assets/l5.jpeg",
+    "/assets/l6.jpeg",
+    "/assets/l7.jpeg",
+    "/assets/l8.jpeg",
+    "/assets/l9.jpeg",
+  ];
   const formik = useFormik({
     initialValues: {
       id: 0,
       email: "",
       username: "",
       password: "",
+      avatar_url: "",
     },
     validationSchema: Yup.object().shape({
       email: Yup.string().email("Email is not valid"),
     }),
     onSubmit: async () => {
-      console.log("aa");
-      console.log(formik.values);
       const res = await axiosInstance.post("/users/", formik.values);
       if (res.status === 201) {
         closeModal();
@@ -95,7 +104,12 @@ export default function ModalRegister({
             type="submit"
             className="mt-5 p-3 font-bold bg-black text-white hover:bg-white border-2 border-black disabled:border-gray-300  hover:text-black disabled:text-gray-400 disabled:bg-gray-300 rounded-sm disabled:cursor-not-allowed"
             disabled={formik.isValid && enable ? null : "disabled"}
-            onClick={formik.handleSubmit}
+            onClick={() => {
+              let randomNumber = Math.floor(Math.random() * 9);
+              console.log(randomNumber);
+              formik.setFieldValue("avatar_url", listImage[randomNumber]);
+              formik.handleSubmit();
+            }}
           >
             Lanjut
           </button>

@@ -8,30 +8,65 @@
       "image_url": ""
     }
   ],
+  "items": [
+    {
+        "id": 1,
+        "merek": "audi",
+        "model": "model 1",
+        "transmisi": "manual",
+        "varian": "",
+        "tahun": "2022",
+        "jarakTempuh": "10.000-15.000",
+        "tipeBahanBakar": "diesel",
+        "warna": "hijau",
+        "tipeBodi": "hatchback",
+        "kapasitasMesin": "<1.000 CC",
+        "tipePenjual": "diler",
+        "namaBursaMobil": "bursa b",
+        "judulIklan": "Mobil Modifikasi Gokil Abis",
+        "deskripsi": "Buat yang suka mengkoleksi mobil absrud sangat cocok.",
+        "harga": "90000000",
+        "listFoto": [
+          "https://journal.classiccars.com/media/2021/04/1934-Chev-Dupont-Domination-worldwide.jpg",
+          "https://automotorpad.com/uploads/posts/2014/5/image-12958.jpg",
+          "https://th.bing.com/th/id/OIP.yDVxNzsNQHegkMD0ST972AHaEj?pid=ImgDet&rs=1"
+        ],
+        "wilayah": {
+          "label": "Kepulauan Riau",
+          "value": "kepulauanRiau"
+        },
+        "kota": {
+          "label": "Tanjung Pinang Kota",
+          "value": "tanjungPinangKota"
+        },
+        "kecamatan": {
+          "label": "Bukit Bestari",
+          "value": "bukitBestari"
+        },
+        "idPenjual": 1
+    }
+  ],
   "users": [
     {
-      "id": 0,
-      "email": "",
-      "username": "",
-      "password": ""
+      "id": 1,
+      "email": "mazsanzgame@gmail.com",
+      "username": "marsmallowz",
+      "password": "qweqwe",
+      "avatar_url": "/assets/l3.jpeg"
     },
     {
       "id": 2,
-      "email": "jason@gmail.com",
-      "username": "jason",
-      "password": "qweqwe"
+      "email": "alsandymaulana15@gmail.com",
+      "username": "almanwa",
+      "password": "qweqwe",
+      "avatar_url": ""
     },
     {
       "id": 3,
-      "email": "mazsanzgame@gmail.com",
-      "username": "marsmallowz",
-      "password": "qweqwe"
-    },
-    {
-      "id": 4,
-      "email": "alsandymaulana15@gmail.com",
-      "username": "massandz",
-      "password": "qweqwe"
+      "email": "saaandyal54@yahoo.co.id",
+      "username": "wawqqq",
+      "password": "qweqweeee",
+      "avatar_url": "/assets/l5.jpeg"
     }
   ]
 }
